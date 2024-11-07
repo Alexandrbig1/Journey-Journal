@@ -15,6 +15,7 @@ import {
 import { useState } from "react";
 import styles from "./stylesRegistration";
 import * as ImagePicker from "expo-image-picker";
+
 import bgImg from "../../assets/images/registration.png";
 
 export default function RegistrationScreen() {
@@ -64,7 +65,7 @@ export default function RegistrationScreen() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
-        <ImageBackground source={bgImg} resizeMode="cover" style={styles.image}>
+        <ImageBackground source={bgImg} resizeMode="cover" style={styles.image}/>
           <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : undefined}
             keyboardVerticalOffset={Platform.select({

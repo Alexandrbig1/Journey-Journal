@@ -1,0 +1,41 @@
+import { colors } from "@/styles/global";
+import { Dimensions, StyleSheet } from "react-native";
+
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("screen");
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    position: "relative",
+  },
+  image: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
+  },
+  formContainer: {
+    width: SCREEN_WIDTH,
+    height: "50%",
+    backgroundColor: colors.white,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    position: "absolute",
+    bottom: 0,
+    paddingTop: 32,
+    paddingHorizontal: 16,
+  },
+  title: {
+    color: colors.black_primary,
+    fontSize: 30,
+    fontWeight: "500",
+    lineHeight: 36,
+    textAlign: "center",
+  },
+  innerWrapper: {
+    gap: 16,
+  },
+});
