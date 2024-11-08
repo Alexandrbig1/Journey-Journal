@@ -15,6 +15,7 @@ import {
 import { useState } from "react";
 import styles from "./stylesRegistration";
 import * as ImagePicker from "expo-image-picker";
+import { PasswordIconBtn } from "@/components/passwordIconBtn";
 
 const bgImg = require("../assets/images/registration.png");
 
@@ -136,14 +137,18 @@ export default function RegistrationScreen({
                     onFocus={() => setFocusedInput("password")}
                     onBlur={() => setFocusedInput("")}
                   />
-                  <TouchableOpacity
+                  {/* <TouchableOpacity
                     onPress={togglePasswordVisibility}
                     style={styles.toggleButton}
                   >
                     <Text style={styles.toggleText}>
                       {secureTextEntry ? "show" : "hide"}
                     </Text>
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
+                  <PasswordIconBtn
+                    secureTextEntry={secureTextEntry}
+                    togglePasswordVisibility={togglePasswordVisibility}
+                  />
                 </View>
               </View>
               <TouchableOpacity style={styles.buttonReg}>

@@ -4,6 +4,7 @@ import { ActivityIndicator } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import RegistrationScreen from "./screens/RegistrationScreen";
 import LoginScreen from "./screens/LoginScreen";
+import "react-native-gesture-handler";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -17,6 +18,7 @@ export default function App() {
   });
 
   const [page, setPage] = useState("registration");
+
   const handlePage = (value: string) => {
     setPage(value);
   };
