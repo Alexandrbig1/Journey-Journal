@@ -1,16 +1,18 @@
-import { Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
-import stylesLogin from "@/screens/stylesLogin";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import React from "react";
+import stylesLogin from "../styles/stylesLogin";
 
-interface RegistrationButtonProps extends TouchableOpacityProps {
+interface RegistrationButtonProps {
   text: string;
+  onPress: () => void;
 }
 
 export const RegistrationButton: React.FC<RegistrationButtonProps> = ({
   text,
-  ...props
+  onPress,
 }) => {
   return (
-    <TouchableOpacity style={stylesLogin.buttonLogin} {...props}>
+    <TouchableOpacity style={stylesLogin.buttonLogin} onPress={onPress}>
       <Text style={stylesLogin.buttonText}>{text}</Text>
     </TouchableOpacity>
   );

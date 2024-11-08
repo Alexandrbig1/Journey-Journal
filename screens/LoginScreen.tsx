@@ -1,20 +1,21 @@
+import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import loginStyles from "../styles/stylesLogin";
+import styles from "../styles/stylesRegistration";
+import { PasswordIconBtn } from "@/components/passwordIconBtn";
+import { RegistrationButton } from "@/components/mainButton";
 import {
-  Image,
   ImageBackground,
   View,
   Text,
   TouchableOpacity,
-  TextInput,
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
+  Alert,
+  TextInput,
 } from "react-native";
-import { useState } from "react";
-import loginStyles from "./stylesLogin";
-import styles from "./stylesRegistration";
-import { PasswordIconBtn } from "@/components/passwordIconBtn";
-import { RegistrationButton } from "@/components/mainButton";
 
 const bgImg = require("../assets/images/registration.png");
 
@@ -24,10 +25,33 @@ export default function LoginScreen({ togglePage }: { togglePage: Function }) {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [focusedInput, setFocusedInput] = useState("");
 
+  const navigation = useNavigation();
+
   const togglePasswordVisibility = () => {
     if (password) {
       setSecureTextEntry(!secureTextEntry);
     }
+  };
+
+  const login = () => {
+    if (!email || !password) {
+      Alert.alert("Fill in all fields");
+      return;
+    }
+
+    // Assuming cookies is a state or prop, you need to define it properly
+    const cookies = {}; // Replace with actual cookies logic
+    const user = cookies[email];
+    if (!user) {
+      Alert.alert("User not found");
+      return;
+    }
+
+    if (user.password !== password) {
+      Alert.alert("Incorrect password");
+      return;
+    }
+    navigation.navigate("Home");
   };
 
   return (
@@ -83,10 +107,10 @@ export default function LoginScreen({ togglePage }: { togglePage: Function }) {
                   </View>
                 </View>
                 <View style={loginStyles.innerWrapper}>
-                  <RegistrationButton text="Login" />
+                  <RegistrationButton text="Login" onPress={login} />
                   <TouchableOpacity
                     style={styles.buttonLogin}
-                    onPress={() => togglePage("registration")}
+                    onPress={() => navigation.navigate("Registration")}
                   >
                     <Text style={styles.buttonTextLogin}>
                       Don't have an account? Register
