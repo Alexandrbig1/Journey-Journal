@@ -5,4 +5,5 @@ export const colors = {
   main_text_Color: "#1B4371",
   grey_text_color: "#BDBDBD",
   input_bg_color: "#F6F6F6",
+  input_border_color: "#E8E8E8",
 };

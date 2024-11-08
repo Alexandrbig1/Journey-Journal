@@ -16,9 +16,13 @@ import { useState } from "react";
 import styles from "./stylesRegistration";
 import * as ImagePicker from "expo-image-picker";
 
-import bgImg from "../../assets/images/registration.png";
+const bgImg = require("../assets/images/registration.png");
 
-export default function RegistrationScreen() {
+export default function RegistrationScreen({
+  togglePage,
+}: {
+  togglePage: Function;
+}) {
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -65,7 +69,7 @@ export default function RegistrationScreen() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
-        <ImageBackground source={bgImg} resizeMode="cover" style={styles.image}/>
+        <ImageBackground source={bgImg} resizeMode="cover" style={styles.image}>
           <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : undefined}
             keyboardVerticalOffset={Platform.select({
@@ -92,10 +96,10 @@ export default function RegistrationScreen() {
                   </Text>
                 </Pressable>
               </View>
-              <Text style={styles.header2}>Реєстрація</Text>
+              <Text style={styles.header2}>Register</Text>
               <View style={styles.inputWrapper}>
                 <TextInput
-                  placeholder="Логін"
+                  placeholder="Enter Your Name"
                   textContentType="nickname"
                   value={login}
                   onChangeText={setLogin}
@@ -107,7 +111,7 @@ export default function RegistrationScreen() {
                   onBlur={() => setFocusedInput("")}
                 />
                 <TextInput
-                  placeholder="Адреса електронної пошти"
+                  placeholder="Enter Your Email"
                   textContentType="emailAddress"
                   value={email}
                   onChangeText={setEmail}
@@ -120,7 +124,7 @@ export default function RegistrationScreen() {
                 />
                 <View style={styles.passwordWrapper}>
                   <TextInput
-                    placeholder="Пароль"
+                    placeholder="Enter Your Password"
                     textContentType="password"
                     secureTextEntry={secureTextEntry}
                     value={password}
@@ -137,16 +141,21 @@ export default function RegistrationScreen() {
                     style={styles.toggleButton}
                   >
                     <Text style={styles.toggleText}>
-                      {secureTextEntry ? "Показати" : "Сховати"}
+                      {secureTextEntry ? "show" : "hide"}
                     </Text>
                   </TouchableOpacity>
                 </View>
               </View>
               <TouchableOpacity style={styles.buttonReg}>
-                <Text style={styles.buttonTextReg}>Зареєструватися</Text>
+                <Text style={styles.buttonTextReg}>Register</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonLogin}>
-                <Text style={styles.buttonTextLogin}>Вже є акаунт? Увійти</Text>
+              <TouchableOpacity
+                style={styles.buttonLogin}
+                onPress={() => togglePage("login")}
+              >
+                <Text style={styles.buttonTextLogin}>
+                  Already have an account? Login
+                </Text>
               </TouchableOpacity>
             </View>
           </KeyboardAvoidingView>

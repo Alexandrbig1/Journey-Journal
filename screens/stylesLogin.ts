@@ -27,6 +27,7 @@ export default StyleSheet.create({
     bottom: 0,
     paddingTop: 32,
     paddingHorizontal: 16,
+    gap: 32,
   },
   title: {
     color: colors.black_primary,
@@ -37,5 +38,16 @@ export default StyleSheet.create({
   },
   innerWrapper: {
     gap: 16,
+  },
+  formWrapper: {
+    gap: 42,
+  },
+  buttonLogin: {
+    padding: 16,
+    width: "100%",
+    borderRadius: 100,
+    backgroundColor: "#FF6C00",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

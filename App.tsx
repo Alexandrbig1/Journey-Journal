@@ -3,6 +3,7 @@ import { useFonts } from "expo-font";
 import { ActivityIndicator } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import RegistrationScreen from "./screens/RegistrationScreen";
+import LoginScreen from "./screens/LoginScreen";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -15,6 +16,11 @@ export default function App() {
     "Roboto-Italic": require("./assets/fonts/Roboto-Italic.ttf"),
   });
 
+  const [page, setPage] = useState("registration");
+  const handlePage = (value: string) => {
+    setPage(value);
+  };
+
   useEffect(() => {
     if (fontsLoaded) {
       SplashScreen.hideAsync();
@@ -25,5 +31,13 @@ export default function App() {
     return <ActivityIndicator />;
   }
 
-  return <RegistrationScreen />;
+  return (
+    <>
+      {page === "registration" ? (
+        <RegistrationScreen togglePage={handlePage} />
+      ) : (
+        <LoginScreen togglePage={handlePage} />
+      )}
+    </>
+  );
 }
