@@ -6,4 +6,5 @@ export const colors = {
   grey_text_color: "#BDBDBD",
   input_bg_color: "#F6F6F6",
   input_border_color: "#E8E8E8",
+  orange_color: "#FF6C00",
 };

@@ -15,7 +15,8 @@ import {
 import { useState } from "react";
 import styles from "./stylesRegistration";
 import * as ImagePicker from "expo-image-picker";
-import { PasswordIconBtn } from "@/components/passwordIconBtn";
+import { RegistrationButton } from "@/components/mainButton";
+import loginStyles from "./stylesLogin";
 
 const bgImg = require("../assets/images/registration.png");
 
@@ -79,7 +80,7 @@ export default function RegistrationScreen({
             })}
             style={styles.keyboardContainer}
           >
-            <View style={styles.regWrapper}>
+            <View style={styles.formContainer}>
               <View style={styles.avatarWrapper}>
                 <Image
                   key={selectedImage ? selectedImage : "default"}
@@ -98,70 +99,68 @@ export default function RegistrationScreen({
                 </Pressable>
               </View>
               <Text style={styles.header2}>Register</Text>
-              <View style={styles.inputWrapper}>
-                <TextInput
-                  placeholder="Enter Your Name"
-                  textContentType="nickname"
-                  value={login}
-                  onChangeText={setLogin}
-                  style={[
-                    styles.textInput,
-                    focusedInput === "login" && styles.focusedInput,
-                  ]}
-                  onFocus={() => setFocusedInput("login")}
-                  onBlur={() => setFocusedInput("")}
-                />
-                <TextInput
-                  placeholder="Enter Your Email"
-                  textContentType="emailAddress"
-                  value={email}
-                  onChangeText={setEmail}
-                  style={[
-                    styles.textInput,
-                    focusedInput === "email" && styles.focusedInput,
-                  ]}
-                  onFocus={() => setFocusedInput("email")}
-                  onBlur={() => setFocusedInput("")}
-                />
-                <View style={styles.passwordWrapper}>
+              <View style={loginStyles.formWrapper}>
+                <View style={loginStyles.innerWrapper}>
                   <TextInput
-                    placeholder="Enter Your Password"
-                    textContentType="password"
-                    secureTextEntry={secureTextEntry}
-                    value={password}
-                    onChangeText={setPassword}
+                    placeholder="Enter Your Name"
+                    textContentType="nickname"
+                    value={login}
+                    onChangeText={setLogin}
                     style={[
                       styles.textInput,
-                      focusedInput === "password" && styles.focusedInput,
+                      focusedInput === "login" && styles.focusedInput,
                     ]}
-                    onFocus={() => setFocusedInput("password")}
+                    onFocus={() => setFocusedInput("login")}
                     onBlur={() => setFocusedInput("")}
                   />
-                  {/* <TouchableOpacity
-                    onPress={togglePasswordVisibility}
-                    style={styles.toggleButton}
-                  >
-                    <Text style={styles.toggleText}>
-                      {secureTextEntry ? "show" : "hide"}
-                    </Text>
-                  </TouchableOpacity> */}
-                  <PasswordIconBtn
-                    secureTextEntry={secureTextEntry}
-                    togglePasswordVisibility={togglePasswordVisibility}
+                  <TextInput
+                    placeholder="Enter Your Email"
+                    textContentType="emailAddress"
+                    value={email}
+                    onChangeText={setEmail}
+                    style={[
+                      styles.textInput,
+                      focusedInput === "email" && styles.focusedInput,
+                    ]}
+                    onFocus={() => setFocusedInput("email")}
+                    onBlur={() => setFocusedInput("")}
                   />
+                  <View style={styles.passwordWrapper}>
+                    <TextInput
+                      placeholder="Enter Your Password"
+                      textContentType="password"
+                      secureTextEntry={secureTextEntry}
+                      value={password}
+                      onChangeText={setPassword}
+                      style={[
+                        styles.textInput,
+                        focusedInput === "password" && styles.focusedInput,
+                      ]}
+                      onFocus={() => setFocusedInput("password")}
+                      onBlur={() => setFocusedInput("")}
+                    />
+                    <TouchableOpacity
+                      onPress={togglePasswordVisibility}
+                      style={styles.toggleButton}
+                    >
+                      <Text style={styles.toggleText}>
+                        {secureTextEntry ? "show" : "hide"}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                <View style={loginStyles.innerWrapper}>
+                  <RegistrationButton text="Register" />
+                  <TouchableOpacity
+                    style={styles.buttonLogin}
+                    onPress={() => togglePage("login")}
+                  >
+                    <Text style={styles.buttonTextLogin}>
+                      Already have an account? Login
+                    </Text>
+                  </TouchableOpacity>
                 </View>
               </View>
-              <TouchableOpacity style={styles.buttonReg}>
-                <Text style={styles.buttonTextReg}>Register</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.buttonLogin}
-                onPress={() => togglePage("login")}
-              >
-                <Text style={styles.buttonTextLogin}>
-                  Already have an account? Login
-                </Text>
-              </TouchableOpacity>
             </View>
           </KeyboardAvoidingView>
         </ImageBackground>

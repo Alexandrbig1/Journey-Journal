@@ -14,6 +14,7 @@ import { useState } from "react";
 import loginStyles from "./stylesLogin";
 import styles from "./stylesRegistration";
 import { PasswordIconBtn } from "@/components/passwordIconBtn";
+import { RegistrationButton } from "@/components/mainButton";
 
 const bgImg = require("../assets/images/registration.png");
 
@@ -40,7 +41,7 @@ export default function LoginScreen({ togglePage }: { togglePage: Function }) {
           <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : undefined}
             keyboardVerticalOffset={Platform.select({
-              ios: -200,
+              ios: -100,
               android: 0,
             })}
             style={styles.keyboardContainer}
@@ -82,9 +83,7 @@ export default function LoginScreen({ togglePage }: { togglePage: Function }) {
                   </View>
                 </View>
                 <View style={loginStyles.innerWrapper}>
-                  <TouchableOpacity style={loginStyles.buttonLogin}>
-                    <Text style={styles.buttonTextReg}>Login</Text>
-                  </TouchableOpacity>
+                  <RegistrationButton text="Login" />
                   <TouchableOpacity
                     style={styles.buttonLogin}
                     onPress={() => togglePage("registration")}

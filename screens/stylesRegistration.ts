@@ -1,4 +1,8 @@
-import { StyleSheet } from "react-native";
+import { colors } from "@/styles/global";
+import { Dimensions, StyleSheet } from "react-native";
+
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("screen");
+
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -14,17 +18,16 @@ export default StyleSheet.create({
     height: "100%",
     justifyContent: "flex-end",
   },
-  regWrapper: {
-    position: "relative",
+  formContainer: {
+    width: SCREEN_WIDTH,
+    height: 549,
+    backgroundColor: colors.white,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    paddingTop: 92,
-    paddingLeft: 16,
-    paddingRight: 16,
-    alignItems: "center",
-    width: "100%",
-    height: 549,
-    backgroundColor: "#fff",
+    marginTop: "auto",
+    paddingTop: 32,
+    paddingHorizontal: 16,
+    gap: 32,
   },
   avatarWrapper: {
     position: "absolute",
@@ -38,7 +41,7 @@ export default StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 16,
-    backgroundColor: "#F6F6F6",
+    backgroundColor: colors.input_bg_color,
   },
   addButton: {
     position: "absolute",
@@ -47,10 +50,10 @@ export default StyleSheet.create({
     width: 25,
     height: 25,
     borderRadius: 50,
-    borderColor: "#FF6C00",
+    borderColor: colors.orange_color,
     borderWidth: 1,
     borderStyle: "solid",
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
   },
   deleteButton: {
     position: "absolute",
@@ -59,13 +62,13 @@ export default StyleSheet.create({
     width: 25,
     height: 25,
     borderRadius: 50,
-    borderColor: "#E8E8E8",
+    borderColor: colors.input_border_color,
     borderWidth: 1,
     borderStyle: "solid",
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
   },
   addIcon: {
-    color: "#FF6C00",
+    color: colors.orange_color,
     fontSize: 25,
     lineHeight: 26,
     fontFamily: "Roboto-Light",
@@ -75,7 +78,7 @@ export default StyleSheet.create({
     height: "100%",
   },
   deleteIcon: {
-    color: "#BDBDBD",
+    color: colors.grey_text_color,
     fontSize: 25,
     lineHeight: 26,
     fontFamily: "Roboto-Light",
@@ -87,12 +90,13 @@ export default StyleSheet.create({
   },
   header2: {
     padding: 0,
-    color: "#212121",
+    color: colors.text_color_black,
     fontFamily: "Roboto-Medium",
     fontSize: 30,
     lineHeight: 35,
     fontWeight: "medium",
     textAlign: "center",
+    marginTop: 48,
   },
   inputWrapper: {
     marginTop: 32,
@@ -108,20 +112,20 @@ export default StyleSheet.create({
     width: "100%",
     borderRadius: 8,
     padding: 16,
-    borderColor: "#E8E8E8",
+    borderColor: colors.input_border_color,
     borderWidth: 1,
     borderStyle: "solid",
-    color: "#BDBDBD",
+    color: colors.grey_text_color,
     fontFamily: "Roboto-Regular",
     fontSize: 16,
     lineHeight: 19,
     fontWeight: "400",
     textAlign: "left",
-    backgroundColor: "#F6F6F6",
+    backgroundColor: colors.input_bg_color,
   },
   focusedInput: {
-    borderColor: "#FF6C00",
-    backgroundColor: "#fff",
+    borderColor: colors.orange_color,
+    backgroundColor: colors.white,
     color: "#212121",
   },
   passwordWrapper: {
@@ -134,7 +138,7 @@ export default StyleSheet.create({
     top: 16,
   },
   toggleText: {
-    color: "#1B4371",
+    color: colors.main_text_Color,
     fontSize: 16,
     lineHeight: 19,
     fontFamily: "Roboto-Regular",
@@ -145,12 +149,12 @@ export default StyleSheet.create({
     height: 50,
     width: "100%",
     borderRadius: 100,
-    backgroundColor: "#FF6C00",
+    backgroundColor: colors.orange_color,
     justifyContent: "center",
     alignItems: "center",
   },
   buttonTextReg: {
-    color: "white",
+    color: colors.white,
     fontFamily: "Roboto-Regular",
     fontSize: 16,
     lineHeight: 19,
@@ -158,14 +162,13 @@ export default StyleSheet.create({
     textAlign: "center",
   },
   buttonLogin: {
-    marginTop: 16,
     height: 19,
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
   },
   buttonTextLogin: {
-    color: "#1B4371",
+    color: colors.main_text_Color,
     fontFamily: "Roboto-Regular",
     fontSize: 16,
     lineHeight: 19,
