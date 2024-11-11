@@ -1,5 +1,5 @@
 import { TouchableOpacity, Text } from "react-native";
-import styles from "../styles/stylesRegistration";
+import styles from "../screens/Registration/stylesRegistration";
 
 interface PasswordIconBtnProps {
   secureTextEntry: boolean;

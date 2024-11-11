@@ -6,9 +6,9 @@ import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Cookies from "universal-cookie";
-import RegistrationScreen from "./screens/RegistrationScreen";
-import LoginScreen from "./screens/LoginScreen";
-import Home from "./screens/Home";
+import RegistrationScreen from "./screens/Registration/RegistrationScreen";
+import LoginScreen from "./screens/Login/LoginScreen";
+import Home from "./screens/Home/Home";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -51,7 +51,8 @@ export default function App() {
         <MainStack.Screen
           name="Home"
           component={Home}
-          options={{ title: "Publications" }}
+          options={{ title: "Publications", headerShown: false }}
+          initialParams={{ cookies }}
         />
       </MainStack.Navigator>
     </NavigationContainer>

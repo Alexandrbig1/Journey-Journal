@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { Cookie } from "universal-cookie/cjs/types";
 import * as ImagePicker from "expo-image-picker";
 import { RegistrationButton } from "@/components/mainButton";
-import styles from "../styles/stylesRegistration";
-import loginStyles from "../styles/stylesLogin";
+import styles from "./stylesRegistration";
+import loginStyles from "../Login/stylesLogin";
 import {
   Text,
   TextInput,
@@ -19,7 +20,7 @@ import {
   Platform,
 } from "react-native";
 
-const bgImg = require("../assets/images/registration.png");
+const bgImg = require("../../assets/images/registration.png");
 
 export default function RegistrationScreen({
   togglePage,
@@ -71,15 +72,15 @@ export default function RegistrationScreen({
       Alert.alert("Fill in all fields");
       return;
     }
-    const cookie: Cookie = JSON.stringify({
+    const cookie: Cookie = {
       name: login,
       email: email,
       password: password,
       image: selectedImage,
       loggedIn: true,
-    });
+    };
     cookies.set(email, cookie);
-    navigation.navigate("Home");
+    navigation.navigate("Home", { user: cookie });
   };
 
   const togglePasswordVisibility = () => {

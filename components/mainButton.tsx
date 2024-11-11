@@ -1,6 +1,6 @@
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import React from "react";
-import stylesLogin from "../styles/stylesLogin";
+import stylesLogin from "../screens/Login/stylesLogin";
 
 interface RegistrationButtonProps {
   text: string;

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import loginStyles from "../styles/stylesLogin";
-import styles from "../styles/stylesRegistration";
+import { Cookie } from "universal-cookie/cjs/types";
+import loginStyles from "./stylesLogin";
+import styles from "../Registration/stylesRegistration";
 import { PasswordIconBtn } from "@/components/passwordIconBtn";
 import { RegistrationButton } from "@/components/mainButton";
 import {
@@ -17,7 +18,7 @@ import {
   TextInput,
 } from "react-native";
 
-const bgImg = require("../assets/images/registration.png");
+const bgImg = require("../../assets/images/registration.png");
 
 export default function LoginScreen({ togglePage }: { togglePage: Function }) {
   const [email, setEmail] = useState("");
@@ -39,9 +40,8 @@ export default function LoginScreen({ togglePage }: { togglePage: Function }) {
       return;
     }
 
-    // Assuming cookies is a state or prop, you need to define it properly
-    const cookies = {}; // Replace with actual cookies logic
-    const user = cookies[email];
+    const cookies = {};
+    const user: Cookie = cookies.get(email);
     if (!user) {
       Alert.alert("User not found");
       return;
@@ -51,7 +51,7 @@ export default function LoginScreen({ togglePage }: { togglePage: Function }) {
       Alert.alert("Incorrect password");
       return;
     }
-    navigation.navigate("Home");
+    navigation.navigate("Home", { user });
   };
 
   return (
