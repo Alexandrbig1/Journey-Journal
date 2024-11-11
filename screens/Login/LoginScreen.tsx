@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Cookie } from "universal-cookie/cjs/types";
 import loginStyles from "./stylesLogin";
 import styles from "../Registration/stylesRegistration";
 import { PasswordIconBtn } from "@/components/passwordIconBtn";
 import { RegistrationButton } from "@/components/mainButton";
+import { bgImg } from "../../utils/Images";
 import {
   ImageBackground,
   View,
@@ -18,13 +19,14 @@ import {
   TextInput,
 } from "react-native";
 
-const bgImg = require("../../assets/images/registration.png");
-
 export default function LoginScreen({ togglePage }: { togglePage: Function }) {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState(false);
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [focusedInput, setFocusedInput] = useState("");
+  const {
+    params: { cookies },
+  } = useRoute();
 
   const navigation = useNavigation();
 
@@ -34,14 +36,15 @@ export default function LoginScreen({ togglePage }: { togglePage: Function }) {
     }
   };
 
-  const login = () => {
+  const handleLogin = () => {
     if (!email || !password) {
       Alert.alert("Fill in all fields");
       return;
     }
 
     const cookies = {};
-    const user: Cookie = cookies.get(email);
+    const user = cookies.get(email);
+
     if (!user) {
       Alert.alert("User not found");
       return;

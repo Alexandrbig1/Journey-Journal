@@ -1,7 +1,17 @@
+import { useState } from "react";
+import { useRoute } from "@react-navigation/native";
 import { Text, View, Image } from "react-native";
 import styles from "./stylesPostsScreen";
-export default function PostsScreen({ route }: any) {
-  const { user } = route.params;
+
+export default function PostsScreen() {
+  const {
+    params: { cookies, user },
+  } = useRoute();
+
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(
+    undefined
+  );
+
   return (
     <View style={styles.container}>
       <View style={styles.userContainer}>

@@ -11,7 +11,7 @@ export default function Home({ route }: any) {
   const navigation = useNavigation();
 
   const {
-    params: { user },
+    params: { user, cookies },
   } = useRoute();
 
   if (!user) {
@@ -22,6 +22,7 @@ export default function Home({ route }: any) {
     );
   }
   const Tabs = createBottomTabNavigator();
+
   return (
     <View style={styles.container}>
       <Tabs.Navigator
@@ -48,11 +49,16 @@ export default function Home({ route }: any) {
           component={PostsScreen}
           initialParams={{ user }}
         />
-        <Tabs.Screen name="Create publication" component={CreatePostsScreen} />
+        <Tabs.Screen
+          name="Create publication"
+          component={CreatePostsScreen}
+          options={{ tabBarStyle: { display: "none" } }}
+        />
         <Tabs.Screen
           name="Profile"
           component={ProfileScreen}
-          initialParams={{ user }}
+          initialParams={{ user, cookies }}
+          options={{ headerShown: false }}
         />
       </Tabs.Navigator>
     </View>
