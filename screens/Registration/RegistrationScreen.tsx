@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Cookie } from "universal-cookie/cjs/types";
+import PickedImage from "@/components/pickedImage";
 import * as ImagePicker from "expo-image-picker";
 import { RegistrationButton } from "@/components/mainButton";
 import styles from "./stylesRegistration";
-import loginStyles from "../Login/stylesLogin";
+import loginStyles from "@/screens/Login/stylesLogin";
+import { bgImg } from "@/utils/Images";
+
 import {
   Text,
   TextInput,
@@ -19,67 +22,41 @@ import {
   TouchableWithoutFeedback,
   Platform,
 } from "react-native";
-
-const bgImg = require("../../assets/images/registration.png");
+import AddImgIcon from "@/icons/AddImgIcon";
+import Inputs from "@/components/Inputs";
 
 export default function RegistrationScreen({
   togglePage,
 }: {
   togglePage: Function;
 }) {
-  const [login, setLogin] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [secureTextEntry, setSecureTextEntry] = useState(true);
+  const { cookies } = useRoute().params;
+  const [loginValue, setLoginValue] = useState("");
+  const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
+  const [secureTextEntryValue, setSecureTextEntryValue] = useState(true);
   const [selectedImage, setSelectedImage] = useState(undefined);
-  const [focusedInput, setFocusedInput] = useState("");
 
   const navigation = useNavigation();
   const cookies = route.params.cookies;
 
-  const pickImageHandler = () => {
-    if (selectedImage) {
-      setSelectedImage(undefined);
-    } else {
-      pickImage();
-    }
-  };
-
-  const pickImage = async () => {
-    const permissionResult =
-      await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (permissionResult.granted === false) {
-      Alert.alert(
-        "Permission Denied",
-        "You need to enable permission to access photos."
-      );
-      return;
-    }
-
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      quality: 1,
-    });
-
-    if (!result.canceled) {
-      setSelectedImage(result.assets[0].uri);
-    }
+  const togglePasswordVisibility = () => {
+    setSecureTextEntryValue(!secureTextEntryValue);
   };
 
   const registration = () => {
-    if (!login || !email || !password || !selectedImage) {
+    if (!loginValue || !emailValue || !passwordValue || !selectedImage) {
       Alert.alert("Fill in all fields");
       return;
     }
     const cookie: Cookie = {
-      name: login,
-      email: email,
-      password: password,
+      name: loginValue,
+      email: emailValue,
+      password: passwordValue,
       image: selectedImage,
       loggedIn: true,
     };
-    cookies.set(email, cookie);
+    cookies.set(emailValue, cookie);
     navigation.navigate("Home", { user: cookie });
   };
 
@@ -102,63 +79,46 @@ export default function RegistrationScreen({
             style={styles.keyboardContainer}
           >
             <View style={styles.formContainer}>
-              <View style={styles.avatarWrapper}>
-                <Image
-                  key={selectedImage ? selectedImage : "default"}
-                  source={{ uri: selectedImage }}
-                  style={styles.downloadedImage}
-                />
-                <Pressable
-                  style={selectedImage ? styles.deleteButton : styles.addButton}
-                  onPress={pickImageHandler}
-                >
-                  <Text
-                    style={selectedImage ? styles.deleteIcon : styles.addIcon}
-                  >
-                    &#43;
-                  </Text>
-                </Pressable>
-              </View>
+              <PickedImage
+                stylesImageWrapper={styles.avatarWrapper}
+                stylesImage={styles.downloadedImage}
+                stylesButton={
+                  selectedImage ? styles.deleteButton : styles.addButton
+                }
+                stylesButtonIcon={
+                  selectedImage ? styles.deleteIcon : styles.addIcon
+                }
+                buttonIcon={AddImgIcon}
+                handleSelectedImage={setSelectedImage}
+              ></PickedImage>
               <Text style={styles.header2}>Register</Text>
               <View style={loginStyles.formWrapper}>
                 <View style={loginStyles.innerWrapper}>
-                  <TextInput
+                  <Inputs
                     placeholder="Enter Your Name"
                     textContentType="nickname"
-                    value={login}
-                    onChangeText={setLogin}
-                    style={[
-                      styles.textInput,
-                      focusedInput === "login" && styles.focusedInput,
-                    ]}
-                    onFocus={() => setFocusedInput("login")}
-                    onBlur={() => setFocusedInput("")}
+                    value={loginValue}
+                    classNameInput={styles.textInput}
+                    classNameFocusedInput={styles.textInputFocused}
+                    onChangeText={setLoginValue}
                   />
-                  <TextInput
+                  <Inputs
                     placeholder="Enter Your Email"
                     textContentType="emailAddress"
-                    value={email}
-                    onChangeText={setEmail}
-                    style={[
-                      styles.textInput,
-                      focusedInput === "email" && styles.focusedInput,
-                    ]}
-                    onFocus={() => setFocusedInput("email")}
-                    onBlur={() => setFocusedInput("")}
+                    value={emailValue}
+                    classNameInput={styles.textInput}
+                    classNameFocusedInput={styles.textInputFocused}
+                    onChangeText={setEmailValue}
                   />
                   <View style={styles.passwordWrapper}>
-                    <TextInput
+                    <Inputs
                       placeholder="Enter Your Password"
                       textContentType="password"
-                      secureTextEntry={secureTextEntry}
-                      value={password}
-                      onChangeText={setPassword}
-                      style={[
-                        styles.textInput,
-                        focusedInput === "password" && styles.focusedInput,
-                      ]}
-                      onFocus={() => setFocusedInput("password")}
-                      onBlur={() => setFocusedInput("")}
+                      secureTextEntry={secureTextEntryValue}
+                      value={passwordValue}
+                      classNameInput={styles.textInput}
+                      classNameFocusedInput={styles.textInputFocused}
+                      onChangeText={setPasswordValue}
                     />
                     <TouchableOpacity
                       onPress={togglePasswordVisibility}

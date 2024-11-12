@@ -2,9 +2,9 @@ import { View, Text } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import CreatePostsScreen from "../CreatePostsScreen/CreatePostsScreen";
-import PostsScreen from "../PostsScreen/PostsScreen";
-import ProfileScreen from "../ProfileScreen/ProfileScreen";
+import CreatePostsScreen from "@/screens/CreatePosts/CreatePostsScreen";
+import PostsScreen from "@/screens/PostsScreen/PostsScreen";
+import ProfileScreen from "@/screens/ProfileScreen/ProfileScreen";
 import styles from "./stylesHome";
 
 export default function Home({ route }: any) {

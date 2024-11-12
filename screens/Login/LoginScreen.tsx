@@ -5,7 +5,7 @@ import loginStyles from "./stylesLogin";
 import styles from "../Registration/stylesRegistration";
 import { PasswordIconBtn } from "@/components/passwordIconBtn";
 import { RegistrationButton } from "@/components/mainButton";
-import { bgImg } from "../../utils/Images";
+import { bgImg } from "@/utils/Images";
 import {
   ImageBackground,
   View,

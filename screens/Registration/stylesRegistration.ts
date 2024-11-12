@@ -54,6 +54,8 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderStyle: "solid",
     backgroundColor: colors.white,
+    justifyContent: "center",
+    alignItems: "center",
   },
   deleteButton: {
     position: "absolute",
@@ -66,27 +68,18 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderStyle: "solid",
     backgroundColor: colors.white,
+    justifyContent: "center",
+    alignItems: "center",
   },
   addIcon: {
     color: colors.orange_color,
-    fontSize: 25,
-    lineHeight: 26,
-    fontFamily: "Roboto-Light",
-    fontWeight: "thin",
-    textAlign: "center",
-    width: "100%",
-    height: "100%",
+    width: 13,
+    height: 13,
   },
   deleteIcon: {
     color: colors.grey_text_color,
-    fontSize: 25,
-    lineHeight: 26,
-    fontFamily: "Roboto-Light",
-    fontWeight: "thin",
-    textAlign: "center",
-    width: "100%",
-    height: "100%",
-    transform: [{ rotate: "45deg" }],
+    width: 13,
+    height: 13,
   },
   header2: {
     padding: 0,
@@ -107,7 +100,7 @@ export default StyleSheet.create({
     width: "100%",
     maxHeight: 343,
   },
-  textInput: {
+  textInputFocused: {
     height: 50,
     width: "100%",
     borderRadius: 8,
@@ -153,7 +146,7 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  buttonTextReg: {
+  buttonRegText: {
     color: colors.white,
     fontFamily: "Roboto-Regular",
     fontSize: 16,
@@ -167,7 +160,7 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  buttonTextLogin: {
+  buttonLoginText: {
     color: colors.main_text_Color,
     fontFamily: "Roboto-Regular",
     fontSize: 16,

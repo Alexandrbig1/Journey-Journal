@@ -1,4 +1,11 @@
-import { TextInput, View, TextInputProps, StyleSheet } from "react-native";
+import {
+  TextInput,
+  View,
+  TextInputProps,
+  StyleSheet,
+  StyleProp,
+  TextStyle,
+} from "react-native";
 import { FC } from "react";
 
 type InputsProps = TextInputProps & {
@@ -8,6 +15,8 @@ type InputsProps = TextInputProps & {
   onFocus?: () => void;
   onBlur?: () => void;
   isFocused?: boolean;
+  classNameInput?: StyleProp<TextStyle>;
+  classNameFocusedInput?: StyleProp<TextStyle>;
 };
 
 const Inputs: FC<InputsProps> = ({
@@ -17,6 +26,8 @@ const Inputs: FC<InputsProps> = ({
   onFocus,
   onBlur,
   isFocused,
+  classNameInput,
+  classNameFocusedInput,
   ...rest
 }) => {
   return (
@@ -27,7 +38,11 @@ const Inputs: FC<InputsProps> = ({
         onChangeText={onChangeText}
         onFocus={onFocus}
         onBlur={onBlur}
-        style={[styles.textInput, isFocused && styles.focusedInput]}
+        style={[
+          styles.textInput,
+          classNameInput,
+          isFocused && classNameFocusedInput,
+        ]}
         {...rest}
       />
     </View>

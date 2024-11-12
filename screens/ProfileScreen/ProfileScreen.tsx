@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Text, View, ImageBackground, ScrollView } from "react-native";
 import { useRoute } from "@react-navigation/native";
-import PickedImage from "../../components/pickImage";
+import PickedImage from "@/components/pickImage";
 import styles from "./stylesProfileScreen";
-import { bgImg } from "../../utils/Images";
-import PlusIcon from "../../icons/PlusIcon";
+import { bgImg } from "@/utils/Images";
+import PlusIcon from "@/icons/PlusIcon";
 
 export default function ProfileScreen() {
   const {
