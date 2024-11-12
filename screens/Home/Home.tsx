@@ -1,5 +1,6 @@
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import CreatePostsScreen from "@/screens/CreatePosts/CreatePostsScreen";
@@ -8,17 +9,19 @@ import ProfileScreen from "@/screens/ProfileScreen/ProfileScreen";
 import styles from "./stylesHome";
 
 export default function Home({ route }: any) {
+  const { params } = useRoute();
+  const { user, users, posts, dataHandler } = params;
   const navigation = useNavigation();
 
-  const {
-    params: { user, cookies },
-  } = useRoute();
+  const handleLogout = () => {
+    navigation.navigate("Login");
+  };
 
   if (!user) {
     return (
-      <View>
+      <SafeAreaView style={{ paddingLeft: 16, paddingRight: 16 }}>
         <Text>Loading...</Text>
-      </View>
+      </SafeAreaView>
     );
   }
   const Tabs = createBottomTabNavigator();
@@ -26,38 +29,29 @@ export default function Home({ route }: any) {
   return (
     <View style={styles.container}>
       <Tabs.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-            if (route.name === "Profile") {
-              iconName = focused
-                ? "ios-information-circle"
-                : "ios-information-circle-outline";
-            } else if (route.name === "Settings") {
-              iconName = focused ? "ios-list-box" : "ios-list";
-            }
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-        })}
-        tabBarOptions={{
+        screenOptions={() => ({
+          headerRight: () => (
+            <Button onPress={handleLogout} title="Logout" color="tomato" />
+          ),
           activeTintColor: "#bc4749",
           inactiveTintColor: "#adb5bd",
-        }}
+        })}
       >
         <Tabs.Screen
           name="Publications"
           component={PostsScreen}
-          initialParams={{ user }}
+          initialParams={{ user, users, posts, dataHandler }}
         />
         <Tabs.Screen
           name="Create publication"
           component={CreatePostsScreen}
           options={{ tabBarStyle: { display: "none" } }}
+          initialParams={{ user, users, posts, dataHandler }}
         />
         <Tabs.Screen
           name="Profile"
           component={ProfileScreen}
-          initialParams={{ user, cookies }}
+          initialParams={{ user, users, posts, dataHandler }}
           options={{ headerShown: false }}
         />
       </Tabs.Navigator>

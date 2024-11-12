@@ -24,9 +24,8 @@ export default function LoginScreen({ togglePage }: { togglePage: Function }) {
   const [password, setPassword] = useState(false);
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [focusedInput, setFocusedInput] = useState("");
-  const {
-    params: { cookies },
-  } = useRoute();
+  const route = useRoute();
+  const { users } = route.params;
 
   const navigation = useNavigation();
 
@@ -43,7 +42,7 @@ export default function LoginScreen({ togglePage }: { togglePage: Function }) {
     }
 
     const cookies = {};
-    const user = cookies.get(email);
+    const user = users[email];
 
     if (!user) {
       Alert.alert("User not found");
@@ -54,6 +53,10 @@ export default function LoginScreen({ togglePage }: { togglePage: Function }) {
       Alert.alert("Incorrect password");
       return;
     }
+    setEmail("");
+    setPassword("");
+    setShowPassword(false);
+
     navigation.navigate("Home", { user });
   };
 
