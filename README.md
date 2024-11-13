@@ -6,6 +6,7 @@
 [![GitHub license](https://img.shields.io/github/license/Alexandrbig1/Journey-Journal)](https://github.com/Alexandrbig1/Journey-Journal/blob/main/LICENSE)
 [![React Native](https://img.shields.io/badge/React%20Native-0.72.3-61DAFB.svg)](https://reactnative.dev/)
 [![Redux](https://img.shields.io/badge/Redux-8.1.3-6231AF.svg)](https://redux.js.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6.3-007ACC.svg)](https://git-scm.com/)
 [![Git](https://img.shields.io/badge/Git-2.35.1-F05032.svg)](https://git-scm.com/)
 
 MemoryLane is a mobile app built with React Native that allows users to document and share their favorite memories. Users can create an account, add photos with descriptions, make comments, and view their own posts on their profile page. The app uses Firebase for authentication and Redux for state management.
