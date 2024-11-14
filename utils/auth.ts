@@ -4,17 +4,17 @@ import { AppDispatch } from "../redux/store";
 import { resetUser, setCurrentUser } from "../redux/auth/authReducer";
 import { Alert } from "react-native";
 import {
+  AuthCredentials,
+  RegistrationCredentials,
+  User,
+} from "@/utils/types/user";
+import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
   updateProfile,
   signOut,
 } from "firebase/auth";
-import {
-  AuthCredentials,
-  RegistrationCredentials,
-  User,
-} from "../utils/types/user";
 
 export const registrationDB = async (
   { email, image, name, password }: RegistrationCredentials,

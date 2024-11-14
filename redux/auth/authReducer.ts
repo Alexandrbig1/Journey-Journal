@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { User } from "../../utils/types/user";
+import { User } from "@/utils/types/user";
 
 const authReducer = createSlice({
   name: "currentUser",

@@ -1,5 +1,5 @@
 import { getPosts, getPostsForUser } from "../../utils/firestore";
-import { PostType } from "../../utils/types/post";
+import { PostType } from "@/utils/types/post";
 import { setPosts } from "../posts/postsReducer";
 import { AppDispatch } from "../store";
 import { setUserPosts } from "../userPosts/userPostsReducer";
