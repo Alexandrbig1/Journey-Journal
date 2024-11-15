@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import RegistrationScreen from "@/screens/Registration/RegistrationScreen";
 import LoginScreen from "@/screens/Login/LoginScreen";
 import HomeStack from "./HomeStack";
-import { Screens } from "../../utils/enums/routes";
+import { Screens } from "@/utils/enums/routes";
 
 const Stack = createStackNavigator();
 

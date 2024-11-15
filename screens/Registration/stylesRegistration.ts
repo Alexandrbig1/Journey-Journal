@@ -1,7 +1,5 @@
 import { colors } from "@/styles/global";
-import { Dimensions, StyleSheet } from "react-native";
-
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("screen");
+import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
@@ -18,30 +16,31 @@ export default StyleSheet.create({
     height: "100%",
     justifyContent: "flex-end",
   },
-  formContainer: {
-    width: SCREEN_WIDTH,
-    height: 549,
-    backgroundColor: colors.white,
+  regWrapper: {
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    marginTop: "auto",
-    paddingTop: 32,
-    paddingHorizontal: 16,
-    gap: 32,
+    paddingTop: 92,
+    paddingLeft: 16,
+    paddingRight: 16,
+    alignItems: "center",
+    width: "100%",
+    height: 549,
+    backgroundColor: colors.white,
   },
   avatarWrapper: {
     position: "absolute",
     top: -60,
     left: "50%",
     transform: [{ translateX: -50 }],
-    width: "auto",
-    height: "auto",
+    width: 120,
+    height: 120,
+    backgroundColor: colors.input_bg_color,
+    borderRadius: 16,
   },
   downloadedImage: {
     width: 120,
     height: 120,
     borderRadius: 16,
-    backgroundColor: colors.input_bg_color,
   },
   addButton: {
     position: "absolute",
@@ -72,14 +71,15 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   addIcon: {
-    color: colors.orange_color,
+    tintColor: colors.orange_color,
     width: 13,
     height: 13,
   },
   deleteIcon: {
-    color: colors.grey_text_color,
+    tintColor: colors.grey_text_color,
     width: 13,
     height: 13,
+    transform: [{ rotate: "45deg" }],
   },
   header2: {
     padding: 0,
@@ -89,7 +89,6 @@ export default StyleSheet.create({
     lineHeight: 35,
     fontWeight: "medium",
     textAlign: "center",
-    marginTop: 48,
   },
   inputWrapper: {
     marginTop: 32,
@@ -100,7 +99,7 @@ export default StyleSheet.create({
     width: "100%",
     maxHeight: 343,
   },
-  textInputFocused: {
+  textInput: {
     height: 50,
     width: "100%",
     borderRadius: 8,
@@ -116,7 +115,7 @@ export default StyleSheet.create({
     textAlign: "left",
     backgroundColor: colors.input_bg_color,
   },
-  focusedInput: {
+  textInputFocused: {
     borderColor: colors.orange_color,
     backgroundColor: colors.white,
     color: "#212121",
@@ -124,18 +123,6 @@ export default StyleSheet.create({
   passwordWrapper: {
     position: "relative",
     width: "100%",
-  },
-  toggleButton: {
-    position: "absolute",
-    right: 16,
-    top: 16,
-  },
-  toggleText: {
-    color: colors.main_text_Color,
-    fontSize: 16,
-    lineHeight: 19,
-    fontFamily: "Roboto-Regular",
-    fontWeight: "regular",
   },
   buttonReg: {
     marginTop: 43,
@@ -147,7 +134,7 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   buttonRegText: {
-    color: colors.white,
+    color: "white",
     fontFamily: "Roboto-Regular",
     fontSize: 16,
     lineHeight: 19,
@@ -155,6 +142,7 @@ export default StyleSheet.create({
     textAlign: "center",
   },
   buttonLogin: {
+    marginTop: 16,
     height: 19,
     width: "100%",
     justifyContent: "center",
@@ -167,5 +155,17 @@ export default StyleSheet.create({
     lineHeight: 19,
     fontWeight: "400",
     textAlign: "center",
+  },
+  toggleButton: {
+    position: "absolute",
+    right: 16,
+    top: 16,
+  },
+  toggleText: {
+    color: colors.main_text_Color,
+    fontSize: 16,
+    lineHeight: 19,
+    fontFamily: "Roboto-Regular",
+    fontWeight: "regular",
   },
 });

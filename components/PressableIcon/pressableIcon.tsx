@@ -19,7 +19,7 @@ interface PressableIconProps {
 
 export default function PressableIcon({
   onPress,
-  icon = PlusIcon,
+  icon = PlusIcon as ImageSourcePropType,
   buttonStyle,
   iconStyle,
 }: PressableIconProps) {

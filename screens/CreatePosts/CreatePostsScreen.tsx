@@ -110,7 +110,7 @@ export default function CreatePostsScreen() {
         onPress={deletePost}
       />
       <TouchableOpacity style={styles.buttonDelete} onPress={() => {}}>
-        <Image source={TrashIcon} style={styles.buttonDeleteIcon} />
+        <TrashIcon style={styles.buttonDeleteIcon} />
       </TouchableOpacity>
     </View>
   );
