@@ -13,7 +13,16 @@ MemoryLane is a mobile app built with React Native that allows users to document
 
 ---
 
+## Live Demo App Store
+
+![Journey Journal app](/assets/images/screenshots/1.png) \_Screenshot 1
+![Journey Journal app](/assets/images/screenshots/1.png) \_Screenshot 2
+![Journey Journal app](/assets/images/screenshots/1.png) \_Screenshot 3
+
+---
+
 ## Features
+
 - **User Registration and Login**: New users can sign up and existing users can log in.
 - **Photo Upload**: Users can add photos with descriptions to share memories.
 - **Comments**: Users can comment on each other's posts.
@@ -22,6 +31,7 @@ MemoryLane is a mobile app built with React Native that allows users to document
 ---
 
 ## Tech Stack
+
 - **React Native**: For building the mobile application.
 - **Firebase**: For user authentication and data storage.
 - **Redux**: For state management.
@@ -30,10 +40,10 @@ MemoryLane is a mobile app built with React Native that allows users to document
 
 ## Usage
 
-* Register a new account or log in if you already have an account.
-* Add new photos with descriptions to create your memory collection.
-* View and comment on others' posts in the main feed.
-* Navigate to your profile to see all photos you've uploaded.
+- Register a new account or log in if you already have an account.
+- Add new photos with descriptions to create your memory collection.
+- View and comment on others' posts in the main feed.
+- Navigate to your profile to see all photos you've uploaded.
 
 ---
 
