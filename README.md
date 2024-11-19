@@ -16,8 +16,8 @@ MemoryLane is a mobile app built with React Native that allows users to document
 ## Live Demo App Store
 
 ![Journey Journal app](/assets/images/screenshots/1.png) \_Screenshot 1
-![Journey Journal app](/assets/images/screenshots/1.png) \_Screenshot 2
-![Journey Journal app](/assets/images/screenshots/1.png) \_Screenshot 3
+![Journey Journal app](/assets/images/screenshots/2.png) \_Screenshot 2
+![Journey Journal app](/assets/images/screenshots/3.png) \_Screenshot 3
 
 ---
 
