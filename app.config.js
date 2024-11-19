@@ -7,12 +7,13 @@ export default {
     orientation: "portrait",
     ios: {
       supportsTablet: true,
+      bundleIdentifier: "com.journey-journal.app",
       config: {
         googleMapsApiKey: process.env.MAP_KEY,
       },
     },
     android: {
-      package: "com.rn.app",
+      package: "com.journey-journal.app",
       config: {
         googleMaps: {
           apiKey: process.env.MAP_KEY,
